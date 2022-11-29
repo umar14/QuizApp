@@ -10,13 +10,13 @@ function Header(props) {
   return (
     <div className={styles.header}>
       <div className={styles.navitems}>
-        <div className={styles.logo}>
+        {/* <div className={styles.logo}>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             HOME{" "}
           </Link>
-        </div>
-        <div className={styles.navlinks2}>
+        </div> */}
+        {/* <div className={styles.navlinks2}>
           {location.pathname === "/login" ||
           location.pathname === "/register" ? (
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -30,7 +30,7 @@ function Header(props) {
               Register/Login
             </Link>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

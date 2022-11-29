@@ -6,10 +6,9 @@ import { useHistory } from "react-router-dom";
 
 function Question(props) {
   let history = useHistory();
-
   const res = props.location.state.res;
   const mins = res.time.split(":")[0];
-  const secs = (res.time.split(":")[1])? res.time.split(":")[1] : 0 ;
+  const secs = res.time.split(":")[1] ? res.time.split(":")[1] : 0;
   const length = res.results.length;
   const [ques, setques] = useState(0);
   const [options, setoptions] = useState([]);
@@ -17,6 +16,7 @@ function Question(props) {
   const [answers, setanswers] = useState({});
 
   const submithandler = () => {
+    console.log(answers);
     let name = localStorage.getItem("name");
     let email = localStorage.getItem("email");
     let pin = localStorage.getItem("pin");
@@ -27,7 +27,7 @@ function Question(props) {
         score += 1;
       }
     }
-    score = (score / length) * 100;
+    // score = (score / length) * 100;
     const options = {
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function Question(props) {
         options
       )
       .then((res) => {
-        console.log(res);
+        console.log("Score:", res);
         history.push("/");
       })
       .catch((err) => console.log(err));
@@ -110,31 +110,33 @@ function Question(props) {
   };
 
   const changeclass = (e) => {
-    const domele = e.nativeEvent.path;
-    domele.reverse();
-    let ans = "";
-    for (let ele of domele) {
-      if (ele.id === "options") {
-        for (let ans of ele.childNodes) {
-          ans.className = styles.container;
-        }
-      } else if (ele.localName === "div" && ele.id === "") {
-        ele.className = styles.containeractive;
-        ans = ele.childNodes[0].value;
+    var p = e.currentTarget.parentElement.childNodes;
+    for (var i = 0; i < p.length; i++) {
+      if (p[i].childNodes[0].value == e.currentTarget.childNodes[0].value) {
+        p[i].className = styles.containeractive;
+      } else {
+        p[i].className = styles.container;
       }
     }
+
+    var ans = e.currentTarget.childNodes[0].value;
     setanswers({ ...answers, [ques]: ans });
   };
 
+
   return (
     <Fragment>
-      <TestNav mins={mins} secs={secs} submithandler={submithandler} />
+      {/* mins={mins} secs={secs} */}
+      <TestNav submithandler={submithandler} />
+      <div className={styles.container}>
+        Total Questions : {length}          
+      </div>
       <div className={styles.qcontainer}>
         {ques + 1}. {question}
       </div>
       <div id="options">
-        {options.map((option, index) => (
-          <div key={index} className={styles.container} onClick={changeclass}>
+        {options.map((option, index) => (          
+          <div key={index} className={answers[ques] == option ? styles.containeractive : styles.container} onClick={changeclass}>
             <input
               className={styles.radios}
               type="radio"
@@ -159,13 +161,10 @@ function Question(props) {
             if (ques == 0) {
             } else {
               setques(ques - 1);
-              let answeropt = e.nativeEvent.path[2].childNodes[2].childNodes;
-              for (let opt of answeropt) {
-                opt.className = styles.container;
-              }
             }
           }}
-          className={styles.buttons1}
+          // className={styles.buttons1}
+          className={ques == 0 ? styles.buttonhide : styles.buttons1 }
         >
           &#8249;
         </a>
@@ -174,13 +173,10 @@ function Question(props) {
             if (ques == length - 1) {
             } else {
               setques(ques + 1);
-              let answeropt = e.nativeEvent.path[2].childNodes[2].childNodes;
-              for (let opt of answeropt) {
-                opt.className = styles.container;
-              }
             }
           }}
-          className={styles.buttons2}
+          // className={styles.buttons2}
+          className={ques == length - 1 ? styles.buttonhide : styles.buttons2 }
         >
           &#8250;
         </a>

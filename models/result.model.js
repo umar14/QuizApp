@@ -13,7 +13,7 @@ const resultSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   score: {
     type: String,

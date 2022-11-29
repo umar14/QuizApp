@@ -22,10 +22,12 @@ function Taketest() {
         localStorage.setItem("name", name);
         localStorage.setItem("email", email);
         localStorage.setItem("pin", pin);
-        console.log("good");
+
+        const data = JSON.parse(Buffer.from(res.data, "base64"));
+
         history.push({
           pathname: "/test",
-          state: { res: res.data },
+          state: { res: data.data },
         });
       })
       .catch((err) => {
@@ -49,7 +51,7 @@ function Taketest() {
             name="name"
             type="text"
           />
-          <br />
+          {/* <br />
           <label className={styles.labels} htmlFor="email">
             Email:
           </label>
@@ -60,7 +62,7 @@ function Taketest() {
             type="email"
             onChange={(e) => setemail(e.target.value)}
           />
-          <br />
+          <br /> */}
           <label className={styles.labels} htmlFor="pin">
             Pin:
           </label>

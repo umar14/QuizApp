@@ -1,5 +1,5 @@
 * {
-  font-family: Georgia, serif;
+  font-family: 'Courier New', Courier, monospace;
   box-sizing: border-box;
   margin: 0 auto;
 }
@@ -15,7 +15,6 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 80px;
   color: white;
-  font-size: 1.2em;
 }
 
 .timer {
@@ -35,4 +34,9 @@
   border-radius: 20px;
   border: 2px solid white;
   float: right;
+}
+
+.submit:hover {
+  /* color: rgb(50, 201, 50); */
+  background: rgb(227, 9, 9);
 }

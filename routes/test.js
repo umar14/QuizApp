@@ -3,42 +3,66 @@ const test = require("../models/test.model");
 const result = require("../models/result.model");
 const axios = require("axios");
 const verify = require("./verifyToken");
+const fs = require('fs');
 
 router.route("/").post(async (req, res) => {
   const testid = req.body.pin;
   const email = req.body.email.toLowerCase();
+  const name = req.body.name.toLowerCase();
+  
   const doc = await test.findOne({ pin: testid }).exec();
   if (!doc) {
     return res.status(400).send({ message: "Test doesn't exist!" });
   }
+  
   if (Date.parse(doc.expiry) < Date.now()) {
     return res.status(400).send({ message: "Test has expired!! " });
   }
-  const check = await result.findOne({ pin: testid, email }).exec();
-  if (check) {
+  
+  // const check = await result.findOne({ pin: testid, email }).exec();
+  // if (check) {
+  //   return res.status(400).send({ message: "Test already taken!" });
+  // }
+
+  const checkname = await result.findOne({ name: name }).exec();
+  if (checkname) {
     return res.status(400).send({ message: "Test already taken!" });
   }
-  const questions = await axios.get("https://opentdb.com/api.php", {
-    params: {
-      amount: doc.amount,
-      category: doc.topic,
-    },
-  });
+
+  const questions = {}
+
+  let rawdata = fs.readFileSync('questions.json');
+  questions.data = JSON.parse(rawdata);
   questions.data.time = doc.time;
-  if (questions.data.response_code == 0) return res.send(questions.data);
-  else
-    return res
-      .status(400)
-      .send({ message: "Couldn't fetch test details. Try again!" });
+  
+  var data = Buffer.from(JSON.stringify(questions)).toString("base64");
+  
+  return res.send(data);
+
+  // const questions = await axios.get("https://opentdb.com/api.php", {
+  //   params: {
+  //     amount: doc.amount,
+  //     category: doc.topic,
+  //   },
+  // });
+
+  // questions.data.time = doc.time;
+  // if (questions.data.response_code == 0) return res.send(questions.data);
+  // else
+  //   return res
+  //     .status(400)
+  //     .send({ message: "Couldn't fetch test details. Try again!" });
+
 });
 
 router.route("/submittest").post(async (req, res) => {
   const score = parseInt(req.body.score);
-  const email = req.body.email.toLowerCase();
+  // const email = req.body.email.toLowerCase();
   const name = req.body.name;
   const pin = req.body.pin;
 
-  const resultEntry = new result({ email, name, pin, score });
+  // const resultEntry = new result({ email, name, pin, score });
+  const resultEntry = new result({ name, pin, score });
   resultEntry
     .save()
     .then(() => res.send("result added!"))

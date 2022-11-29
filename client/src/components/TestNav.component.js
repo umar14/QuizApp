@@ -8,9 +8,9 @@ function TestNav(props) {
     <div className={styles.header}>
       <div className={styles.navitems}>
         <div></div>
-        <div className={styles.timer}>
+        {/* <div className={styles.timer}>
           <Timer {...props} />
-        </div>
+        </div> */}
         <div className={styles.submit} onClick={props.submithandler}>
           Submit
         </div>

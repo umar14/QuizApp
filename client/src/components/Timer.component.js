@@ -34,8 +34,8 @@ function Timer(props) {
       return () => {
         if (window.performance) {
           if (performance.navigation.type == 1) {
-            alert('reloaded encountered, Submitting the test');
-            props.submithandler();
+            // alert('reloaded encountered, Submitting the test');
+            // props.submithandler();
           } 
 }
         

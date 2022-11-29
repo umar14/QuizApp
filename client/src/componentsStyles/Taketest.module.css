@@ -1,7 +1,6 @@
 * {
   font-family: Georgia, serif;
   box-sizing: border-box;
-
   margin: 0 auto;
 }
 
@@ -25,6 +24,7 @@ body {
   width: 40%;
   padding: 5% 5% 5% 5%;
   line-height: 22px;
+  font-size: 1.17em;
 }
 
 .labels {
@@ -39,6 +39,7 @@ body {
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1.17em;
 }
 
 .buttons {
@@ -49,11 +50,13 @@ body {
   border-radius: 4px;
   padding: 3.5% 5%;
   color: white;
+  font-size: 1.17em;
 }
 
 @media screen and (max-width: 600px) {
   .taketest {
     margin: auto;
+    font-size: 14px;
     background: white;
     border: 2px solid black;
     border-radius: 10px;

@@ -9,7 +9,7 @@ const testSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   amount: {
     type: String,

@@ -1,19 +1,19 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config();
 const path = require("path");
 const morgan = require("morgan");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 
 app.use(cors());
 app.use(express.json());
-
 app.use(morgan("tiny"));
 
-const uri = process.env.ATLAS_URI;
+const uri = 'mongodb://localhost:27017';
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -38,6 +38,7 @@ if (
   app.all("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
+  console.log('production ready!')
 }
 
-app.listen(port, console.log(`listing at port ${port}`));
+app.listen(port,"0.0.0.0", console.log(`listis at port ${port}`));
