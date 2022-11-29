@@ -1,0 +1,182 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "question": "What is Linux?",
+            "correct_answer": "Kernel",
+            "incorrect_answers": [
+                "Driver",
+                "OS",
+                "Server"
+            ]
+        },
+        {
+            "question": "How to change directory?",
+            "correct_answer": "cd",
+            "incorrect_answers": [
+                "dir",
+                "cp",
+                "cd ."
+            ]
+        },
+        {
+            "question": "How to remove files?",
+            "correct_answer": "rm",
+            "incorrect_answers": [
+                "remove",
+                "rmf",
+                "del"
+            ]
+        },
+        {
+            "question": "How to list block devices?",
+            "correct_answer": "lsblk",
+            "incorrect_answers": [
+                "lsusb",
+                "lsdev",
+                "ls /dev"
+            ]
+        },
+        {
+            "question": "How to see CPU stats?",
+            "correct_answer": "lscpu",
+            "incorrect_answers": [
+                "top",
+                "htop",
+                "lstat"
+            ]
+        },
+        {
+            "question": "Which command is used to find files?",
+            "correct_answer": "find",
+            "incorrect_answers": [
+                "search",
+                "lookup",
+                "see"
+            ]
+        },
+        {
+            "question": "What command is used to connect to server?",
+            "correct_answer": "SSH",
+            "incorrect_answers": [
+                "telnet",
+                "rsync",
+                "http"
+            ]
+        },
+        {
+            "question": "Linux requires a license",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "question": "What command is used to see permissions?",
+            "correct_answer": "ls -al",
+            "incorrect_answers": [
+                "ls -t",
+                "ls -a",
+                "ls -h"
+            ]
+        },
+        {
+            "question": "What command is used to download packages?",
+            "correct_answer": "apt",
+            "incorrect_answers": [
+                "yum",
+                "dpkg",
+                "pacman"
+            ]
+        },
+        {
+            "question": "What is Linux?",
+            "correct_answer": "Kernel",
+            "incorrect_answers": [
+                "Driver",
+                "OS",
+                "I don't know!!!!"
+            ]
+        },
+        {
+            "question": "How to change directory?",
+            "correct_answer": "cd",
+            "incorrect_answers": [
+                "dir",
+                "change",
+                "cdd"
+            ]
+        },
+        {
+            "question": "How to remove files?",
+            "correct_answer": "rm",
+            "incorrect_answers": [
+                "remove",
+                "rmf",
+                "delete"
+            ]
+        },
+        {
+            "question": "How to list block devices?",
+            "correct_answer": "lsblk",
+            "incorrect_answers": [
+                "lsusb",
+                "lsdev",
+                "ls /dev"
+            ]
+        },
+        {
+            "question": "How to see CPU stats?",
+            "correct_answer": "lscpu",
+            "incorrect_answers": [
+                "top",
+                "htop",
+                "lstat"
+            ]
+        },
+        {
+            "question": "Which command is used to find files?",
+            "correct_answer": "find",
+            "incorrect_answers": [
+                "search",
+                "lookup",
+                "see"
+            ]
+        },
+        {
+            "question": "What command is used to connect to server?",
+            "correct_answer": "SSH",
+            "incorrect_answers": [
+                "telnet",
+                "rsync",
+                "http"
+            ]
+        },
+        {
+            "question": "Linux requires a license",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "question": "What command is used to see permissions?",
+            "correct_answer": "ls -al",
+            "incorrect_answers": [
+                "ls -t",
+                "ls -a",
+                "ls -h"
+            ]
+        },
+        {
+            "question": "What command is used to download packages?",
+            "correct_answer": "apt",
+            "incorrect_answers": [
+                "yum",
+                "dpkg",
+                "pacman"
+            ]
+        }
+
+    ]
+  }
